@@ -1,33 +1,5 @@
-<h1>Log in</h1>
-
-<%= form_tag session_path do %>
-  <div class="field">
-    <%= label_tag :email %>
-    <%= text_field_tag :email, params[:email] %>
-  </div>
-  <div class="field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-  </div>
-  <div class="actions"><%= submit_tag "Log in" %></div>
-  <div class="login-signup">Don't have an account? <a href="/users/new">Sign up here!</a></div>
-
-
-  <div class="future-events--title"><h1>Upcoming Events</h1></div>
-  <div class="future-events--list">
-  	<% if @events.empty? %>
-  	<div class="future-events_empty">Sorry no upcoming events! Login to create one.</div>
-  	<% else %>
-    <ul>
-      <% @events.each do |event| %>
-        <li>
-        <%= link_to event.name, event_url(event) %>
-        </li>
-  		<% end %>
-    </ul>
-	<% end %>
-  </div>
-<% end %>
+<br>
+<h1>Upcoming Events</h1>
 
 <div class="future-events--calendar">
   <div class="future-events--calendar--title">
