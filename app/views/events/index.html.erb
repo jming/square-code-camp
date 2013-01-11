@@ -18,7 +18,7 @@
   <% @created_events.each do |event| %>
     <tr>
       <td>
-        <%= event.name %>
+        <%= link_to event.name, event_url(event) %>
       </td>
       <td>
         <%= event.street %></br>
