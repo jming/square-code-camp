@@ -1,4 +1,4 @@
-<header class="navbar navbard-inverse navbar-fixed-top">
+<div class="navbar navbard-inverse navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container">
 			<a class="brand" href="#"><%= image_tag("logo.png")%></a>
@@ -9,12 +9,12 @@
       
 			<div class="nav-collapse collapse">
 			  <% if current_user.nil? %>
-			    <%= form_tag session_path, :class => 'navbar-form pull-right' do %>
+			    <%= form_tag session_path, :class => "navbar-form pull-right" do %>
 			      <%= text_field_tag :email, params[:email], :placeholder => "Email address" %>
 			      <%= password_field_tag :password, "", :placeholder => 'Password' %>
 			      <%= submit_tag "Log in", :class => "btn" %>
+  			    <%= link_to "New User", new_user_url, :class => "btn" %>
 			    <% end %>
-			  
 			  <% else %>
           <p class="navbar-text pull-right">
             Welcome <%= current_user.name %>
@@ -27,4 +27,4 @@
 			</div>
 		</div> <!-- end of container -->
 	</div> <!-- end of navbar-inner -->
-</header>
+</div>
