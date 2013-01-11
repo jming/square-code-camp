@@ -1,0 +1,21 @@
+<header class="navbar navbard-inverse navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="brand" href="#"><%= image_tag("logo.png")%></a>
+			
+			<ul class="nav">
+        <li><%= link_to "View Events", "/session/new"  %></li>
+        <li><%= link_to "My Events", "/events"  %></li>
+        <li><%= link_to "Logout", session_url, :method => :delete %></li>
+      </ul>
+      
+			<% if %>
+			  <%= form_tag sessions_path, :class => 'navbar-form pull-right ' do %>
+			    <%= text_field_tag :email, params[:email], :placeholder => "Email address" %>
+			    <%= password_field_tag :password, "", :placeholder => 'Password' %>
+			    <%= submit_tag "Log in", :class => "btn" %>
+			  <% end %>
+			<% end %>
+		</div> <!-- end of container -->
+	</div> <!-- end of navbar-inner -->
+</header>
