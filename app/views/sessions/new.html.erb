@@ -1,22 +1,10 @@
-<h1>Upcoming Events</h1>
-<% if @events.empty? %> 
-Sorry no events available. Login to create one!
-<% else %>
-  <ul>
-    <% @events.each do |event| %>
-      <li>
-      <%= link_to event.name, event_url(event) %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
 
 <div class="future-events--calendar">
   <div class="future-events--calendar--title">
-    <h3><%= t('date.month_names')[Date.today.month] %></h3>
+    <h3><%= t('date.month_names')[Date.today.month] %> <%=Date.today.year%></h3>
   </div>
 
-  <table class="table table-bordered">
+  <table class="table table-bordered table-calendar">
     <tr>
       <th> Sunday </th>
       <th> Monday </th>
@@ -49,3 +37,16 @@ Sorry no events available. Login to create one!
 
   </table>
 </div>
+
+<h3>Upcoming Events</h3>
+<% if @events.empty? %> 
+Sorry no events available. Login to create one!
+<% else %>
+  <ul>
+    <% @events.each do |event| %>
+      <li>
+      <%= link_to event.name, event_url(event) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
