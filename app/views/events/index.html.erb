@@ -1,60 +1,69 @@
 <h3>Events I Created</h3>
-<table>
-  <tr>
-    <th>
-      Name
-    </th>
-    <th>
-      Address
-    </th>
-    <th>
-      Date
-    </th>
-  </tr>
-<% @created_events.each do |event| %>
-  <tr>
-    <td>
-      <%= event.name %>
-    </td>
-    <td>
-      <%= event.street %></br>
-      <%= event.zip_code %>
-    </td>
-    <td>
-      <%= event.occurs_at.try(:strftime, "%B %d, %l:%M %p") %>
-    </td>
-    <td>
-      <%= link_to 'edit', edit_user_event_url(current_user, :id => event.id) %>
-      <%= link_to "destroy", user_event_url(current_user, :id => event.id), :method => :delete, :confirm => "Are you sure?" %>
-    </td>
-  </tr>
+<% if @created_events.empty? %>
+  <div class="created-events_empty">Sorry you haven't created any events. <a href="/events/new">Create one here!</a></div>
+<% else %>
+  <table>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Address
+      </th>
+      <th>
+        Date
+      </th>
+    </tr>
+  <% @created_events.each do |event| %>
+    <tr>
+      <td>
+        <%= event.name %>
+      </td>
+      <td>
+        <%= event.street %></br>
+        <%= event.zip_code %>
+      </td>
+      <td>
+        <%= event.occurs_at.try(:strftime, "%B %d, %l:%M %p") %>
+      </td>
+      <td>
+        <%= link_to 'edit', edit_user_event_url(current_user, :id => event.id) %>
+        <%= link_to "destroy", user_event_url(current_user, :id => event.id), :method => :delete, :confirm => "Are you sure?" %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
 <% end %>
-</table>
+
 <h3>Events I'm attending</h3>
-<table>
-  <tr>
-    <th>
-      Name
-    </th>
-    <th>
-      Address
-    </th>
-    <th>
-      Date
-    </th>
-  </tr>
-<% @events.each do |event| %>
-  <tr>
-    <td>
-      <%= event.name %>
-    </td>
-    <td>
-      <%= event.street %></br>
-      <%= event.zip_code %>
-    </td>
-    <td>
-      <%= event.occurs_at.try(:strftime, "%B %d, %l:%M %p") %>
-    </td>
-  </tr>
+<% if @events.empty? %>
+  <div class="attending-events_empty">Sorry you haven't signed up to any events. <a href="/session/new">Check out the events here!</a></div>
+<% else %>
+  <table>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Address
+      </th>
+      <th>
+        Date
+      </th>
+    </tr>
+  <% @events.each do |event| %>
+    <tr>
+      <td>
+        <%= event.name %>
+      </td>
+      <td>
+        <%= event.street %></br>
+        <%= event.zip_code %>
+      </td>
+      <td>
+        <%= event.occurs_at.try(:strftime, "%B %d, %l:%M %p") %>
+      </td>
+    </tr>
+  <% end %>
+  </table>
 <% end %>
-</table>
