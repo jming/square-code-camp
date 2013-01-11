@@ -3,8 +3,20 @@ body {
 }
 
 
-.table-calendar {
-  padding-top: 50px;
+.table-calendar td {
+  height: 80px;
+  width: 80px;
+  overflow: auto;
+}
+
+
+
+.calendar-event {
+    list-style-type:none;
+	background-color:black;
+	color:white;
+	padding:2px;
+	border: solid 2px white;
 }
 
 .nav-centre {
