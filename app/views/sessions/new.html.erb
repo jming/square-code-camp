@@ -24,3 +24,31 @@
 	<% end %>
   </div>
 <% end %>
+
+<div class="future-events--calendar">
+  <div class="future-events--calendar--title">
+    <h3><%= t('date.month_names')[Date.today.month] %></h3>
+  </div>
+  <table class="table table-bordered">
+    <tr>
+      <th> Sunday </th>
+      <th> Monday </th>
+      <th> Tuesday </th>
+      <th> Wednesday </th>
+      <th> Thursday </th>
+      <th> Friday </th>
+      <th> Saturday </th>
+    </tr>
+    <% Date.today.beginning_of_month.beginning_of_week(:sunday).upto(Date.today.end_of_month.end_of_week(:sunday)) do |date| %>
+      <% if date.sunday? %>
+        <tr><td><%= date.day %></td>
+      <% elsif date.saturday? %>
+        <td><%= date.day %></td><tr>
+      <% else %>
+        <td><%= date.day %></td>
+      <% end %>
+    <% end %>
+    <!--Date.today.beginning_of_month.wday // weekday of month (empty cells)-->
+
+  </table>
+</div>
