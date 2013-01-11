@@ -14,7 +14,7 @@ class EventsController < ApplicationController
     @event = current_user.created_events.build(params[:event]) #, :as => :admin)
     @event.creator = current_user
     if @event.save
-      redirect_to user_events_url, :notice => "Event Created!"
+      redirect_to events_url, :notice => "Event Created!"
     else
       render "new"
     end
@@ -27,7 +27,7 @@ class EventsController < ApplicationController
   def update
     @event = current_user.created_events.find(params[:id]) 
     if @event.update_attributes(params[:event])
-      redirect_to user_events_url, :notice => "Event Updated!"
+      redirect_to events_url, :notice => "Event Updated!"
     else
       render "edit"
     end
@@ -44,7 +44,7 @@ class EventsController < ApplicationController
     else
       notice = "Event could not be Destroyed!"
     end
-    redirect_to user_events_url, :notice => notice
+    redirect_to events_url, :notice => notice
   end
   
 
@@ -53,7 +53,7 @@ class EventsController < ApplicationController
     user = User.find(params[:user_id])
     @event.attendees << user
     if @event.save
-      redirect_to user_events_url, :notice => "Attending Event!"
+      redirect_to events_url, :notice => "Attending Event!"
     else
       render "show"
     end

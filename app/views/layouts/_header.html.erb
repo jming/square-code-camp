@@ -9,13 +9,13 @@
         <li><%= link_to "Logout", session_url, :method => :delete %></li>
       </ul>
       
-			<% if %>
-			  <%= form_tag sessions_path, :class => 'navbar-form pull-right ' do %>
+	
+			  <%= form_tag session_path, :class => 'navbar-form pull-right ' do %>
 			    <%= text_field_tag :email, params[:email], :placeholder => "Email address" %>
 			    <%= password_field_tag :password, "", :placeholder => 'Password' %>
 			    <%= submit_tag "Log in", :class => "btn" %>
 			  <% end %>
-			<% end %>
+		
 		</div> <!-- end of container -->
 	</div> <!-- end of navbar-inner -->
 </header>
