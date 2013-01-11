@@ -10,4 +10,10 @@
     <%= password_field_tag :password %>
   </div>
   <div class="actions"><%= submit_tag "Log in" %></div>
+  <div class="future-events--title"><h1>Upcoming Events</h1></div>
+  <div class="future-events--list">
+	<%  @events.each do |event| %>
+	<%= event.name + "\n"%>
+	<% end %>
+  </div>
 <% end %>
