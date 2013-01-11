@@ -23,13 +23,13 @@
         <%= date.day %>
         <% day_events = @events.select { |event| event.occurs_at.to_date == date } %>
         <% if !day_events.empty? %> 
-          <ul>
+         
             <% day_events.each do |event| %>
-              <li>
-              <%= link_to event.name, event_url(event) %>
-              </li>
+             <br/>
+              <%= link_to truncate(event.name, :length => 17), event_url(event), :class => 'calendar-event' %>
+           	
             <% end %>
-          </ul>
+         
         <% end %>
       </td>
 
@@ -37,6 +37,9 @@
 
   </table>
 </div>
+
+<div class="well sidebar-nav">
+
 
 <h3>Upcoming Events</h3>
 <% if @events.empty? %> 
@@ -50,3 +53,4 @@ Sorry no events available. Login to create one!
     <% end %>
   </ul>
 <% end %>
+</div>
