@@ -4,7 +4,7 @@ Platz::Application.routes.draw do
   get "signup" => "users#new", :as => "signup"
   root :to => "events#index"
 
-  resource :session
+  resource :session   
   resources :events
   resources :users do
     post 'attend'
