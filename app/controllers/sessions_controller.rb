@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   def new
     @events = Event.where("occurs_at > ?", Date.today)
+    @events_all = Event.all
   end
 
   def create

@@ -18,9 +18,13 @@
   	<% if @events.empty? %>
   	<div class="future-events_empty">Sorry no upcoming events! Login to create one.</div>
   	<% else %>
-		<% @events.each do |event| %>
-		<% link_to event.name + "\n", event_url(event) %>
-		<% end %>
+    <ul>
+      <% @events.each do |event| %>
+        <li>
+        <%= link_to event.name, event_url(event) %>
+        </li>
+  		<% end %>
+    </ul>
 	<% end %>
   </div>
 <% end %>
@@ -29,6 +33,7 @@
   <div class="future-events--calendar--title">
     <h3><%= t('date.month_names')[Date.today.month] %></h3>
   </div>
+
   <table class="table table-bordered">
     <tr>
       <th> Sunday </th>
@@ -41,14 +46,24 @@
     </tr>
     <% Date.today.beginning_of_month.beginning_of_week(:sunday).upto(Date.today.end_of_month.end_of_week(:sunday)) do |date| %>
       <% if date.sunday? %>
-        <tr><td><%= date.day %></td>
-      <% elsif date.saturday? %>
-        <td><%= date.day %></td><tr>
-      <% else %>
-        <td><%= date.day %></td>
+        <tr></tr>
       <% end %>
+
+      <td>
+        <%= date.day %>
+        <% day_events = @events.select { |event| event.occurs_at.to_date == date } %>
+        <% if !day_events.empty? %> 
+          <ul>
+            <% day_events.each do |event| %>
+              <li>
+              <%= link_to event.name, event_url(event) %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </td>
+
     <% end %>
-    <!--Date.today.beginning_of_month.wday // weekday of month (empty cells)-->
 
   </table>
 </div>
