@@ -12,8 +12,8 @@
   <div class="actions"><%= submit_tag "Log in" %></div>
   <div class="future-events--title"><h1>Upcoming Events</h1></div>
   <div class="future-events--list">
-	<%  @events.each do |event| %>
-	<%= event.name + "\n"%>
+	<% @events.each do |event| %>
+	<% link_to event.name + "\n", event_url(event) %>
 	<% end %>
   </div>
 <% end %>
