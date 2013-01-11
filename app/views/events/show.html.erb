@@ -1,15 +1,18 @@
 <div>
   <h1><%= @event.name %></h1>
   <div>
-    <%= @event.street %></br>
-    <%= @event.zip_code %>
+    Street: <%= @event.street %></br>
+    Zip code: <%= @event.zip_code %>
   </div>
   <div>
-    <%= @event.occurs_at.try(:strftime, "%B %d, %l:%M %p") %>
+    Time: <%= @event.occurs_at.try(:strftime, "%B %d, %l:%M %p") %>
   </div>
   <% if @event.created_by?(current_user) %>
     <%= link_to 'edit', edit_event_url(@event) %>
   <% else %>
-    <%= link_to 'attend', event_attend_url(@event, :user_id => current_user.id), :method => :post %>
+    <% if current_user %>
+      <%= link_to 'attend', event_attend_url(@event, :user_id => current_user.id), :method => :post %>
+    <% end %>
   <% end %>
+  </div>
 </div>

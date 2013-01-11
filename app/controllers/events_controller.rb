@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :require_login
+  before_filter :require_login, :except => :show
 
   def index
     @events = current_user.events
@@ -34,7 +34,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = current_user.created_events.find(params[:id])
+    @event = Event.find(params[:id])
   end
 
   def destroy
@@ -49,7 +49,7 @@ class EventsController < ApplicationController
   
 
   def attend
-    @event = current_user.created_events.find(params[:event_id])
+    @event = Event.find(params[:event_id])
     user = User.find(params[:user_id])
     @event.attendees << user
     if @event.save

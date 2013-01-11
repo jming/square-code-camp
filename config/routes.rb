@@ -5,10 +5,10 @@ Platz::Application.routes.draw do
   root :to => "sessions#new" #:to => "events#index"
 
   resource :session   
-  resources :events
-  resources :users do
+  resources :events do
     post 'attend'
   end
+  resources :users 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
