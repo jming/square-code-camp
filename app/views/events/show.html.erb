@@ -1,20 +1,31 @@
 <div>
   <h1><%= @event.name %></h1>
-  <div>
-    Street: <%= @event.street %></br>
-    Zip code: <%= @event.zip_code %>
+  <div class="event-details--basic">
+    <h3> Basic details </h3>
+    <table class="table table-striped">
+      <tr>
+        <td> Street </td>
+        <td> <%= @event.street %> </td>
+      </tr>
+      <tr>
+        <td> Zip Code </td>
+        <td> <%= @event.zip_code %> </td>
+      </tr>
+      <tr>
+        <td> Time </td>
+        <td>  <%= @event.occurs_at.try(:strftime, "%B %d, %l:%M %p") %> </td>
+      </tr>
+    </table>
   </div>
-  <div>
-    Time: <%= @event.occurs_at.try(:strftime, "%B %d, %l:%M %p") %>
-  </div>
-  <div>
-    Details: <%= @event.details %>
+  <div class="event-details">
+    <h3> Additional details </h3>
+    <%= @event.details %>
   </div>
   <% if @event.created_by?(current_user) %>
-    <%= link_to 'edit', edit_event_url(@event) %>
+    <%= link_to 'Edit', edit_event_url(@event), :class => "btn" %>
   <% else %>
     <% if current_user %>
-      <%= link_to 'attend', event_attend_url(@event, :user_id => current_user.id), :method => :post %>
+      <%= link_to 'Attend', event_attend_url(@event, :user_id => current_user.id), :method => :post, :class => "btn" %>
     <% end %>
   <% end %>
 </div>
