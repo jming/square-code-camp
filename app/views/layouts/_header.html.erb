@@ -17,7 +17,7 @@
 			    <% end %>
 			  <% else %>
           <p class="navbar-text nav-centre pull-right">
-            Welcome <%= current_user.name %>
+            Welcome <%= link_to current_user.name || "User", edit_user_url(current_user) %>
           </p>
           <ul class="nav nav-centre">
             <li><%= link_to "My Events", "/events"  %></li>
