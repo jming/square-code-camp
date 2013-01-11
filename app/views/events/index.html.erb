@@ -1,9 +1,10 @@
 <h3>Events I Created</h3>
-<button class="btn"><a href="/events/new">Create event</a></button>
+<a href="/events/new" class="btn btn-success">Create event</a>
+
 <% if @created_events.empty? %>
   <div class="created-events_empty">Sorry you haven't created any events. <a href="/events/new">Create one here!</a></div>
 <% else %>
-  <table>
+  <table class="table table-hover">
     <tr>
       <th>
         Name
@@ -14,6 +15,9 @@
       <th>
         Date
       </th>
+      <th> 
+        Options
+      </th>
     </tr>
   <% @created_events.each do |event| %>
     <tr>
@@ -21,15 +25,15 @@
         <%= link_to event.name, event_url(event) %>
       </td>
       <td>
-        <%= event.street %></br>
+        <%= event.street %>,
         <%= event.zip_code %>
       </td>
       <td>
         <%= event.occurs_at.try(:strftime, "%B %d, %l:%M %p") %>
       </td>
       <td>
-        <%= link_to 'edit', edit_event_url(event) %>
-        <%= link_to "destroy", event_url(event), :method => :delete, :confirm => "Are you sure?" %>
+        <%= link_to 'edit', edit_event_url(event), :class => "btn"%>
+        <%= link_to "delete", event_url(event), :method => :delete, :confirm => "Are you sure?", :class => "btn btn-danger"%>
       </td>
     </tr>
   <% end %>
@@ -40,7 +44,7 @@
 <% if @events.empty? %>
   <div class="attending-events_empty">Sorry you haven't signed up to any events. <a href="/session/new">Check out the events here!</a></div>
 <% else %>
-  <table>
+  <table class="table table-hover">
     <tr>
       <th>
         Name
@@ -58,7 +62,7 @@
         <%= link_to event.name, event_url(event) %>
       </td>
       <td>
-        <%= event.street %></br>
+        <%= event.street %>,
         <%= event.zip_code %>
       </td>
       <td>

@@ -17,6 +17,10 @@
           :order => [:month, :day, :year, :hour, :minute], :minute_step => 15  %>
     </div>
     <div>
+      <%= form.label :details %>
+      <%= form.text_area :details, :rows => 3 %>
+    </div>
+    <div>
       <%= form.submit %>
     </div>
   <% end %>

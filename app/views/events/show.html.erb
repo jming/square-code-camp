@@ -7,6 +7,9 @@
   <div>
     Time: <%= @event.occurs_at.try(:strftime, "%B %d, %l:%M %p") %>
   </div>
+  <div>
+    Details: <%= @event.details %>
+  </div>
   <% if @event.created_by?(current_user) %>
     <%= link_to 'edit', edit_event_url(@event) %>
   <% else %>
