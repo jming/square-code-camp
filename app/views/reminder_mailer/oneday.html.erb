@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1><%= @event.name %> is tomorrow!</h1>
+    <div>
+      <h4>Address</h4>
+      <%= @event.street %>,<%= @event.zip_code %>
+    </div>
+    <div>
+      <h4>Time</h4>
+      <%= @event.occurs_at.try(:strftime, "%B %d, %l:%M %p") %>
+    </div>
+    <div>
+      <h4>Additional Details</h4>
+      <%= @event.details %>
+    </div>
+  </body>
+</html>

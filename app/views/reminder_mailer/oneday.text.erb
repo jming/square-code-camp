@@ -1,0 +1,6 @@
+<%= @event.name %> is tomorrow!
+
+Address: <%= @event.street %><%= @event.zip_code %>
+Time: <%= @event.occurs_at.try(:strftime, "%B %d, %l:%M %p") %>
+
+Additional details: <%= @event.details %>
