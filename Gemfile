@@ -17,3 +17,4 @@ end
 gem 'jquery-rails'
 gem 'capistrano'
 gem 'twitter-bootstrap-rails'
+gem 'carrierwave'

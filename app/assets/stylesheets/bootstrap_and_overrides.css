@@ -7,11 +7,16 @@
   */
 
 .navbar-form {
-	margin-top: 10px;
+	margin-top:10px;
 }
 
 a {
 	color:#db7093;
+}
+
+a:hover {
+	text-decoration:none;
+	color:#cdc9c9;
 }
 
 .btn {
