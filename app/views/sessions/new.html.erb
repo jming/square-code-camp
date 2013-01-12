@@ -1,9 +1,14 @@
 
 <div class="future-events--calendar">
   <div class="future-events--calendar--title">
-    <h3><%= t('date.month_names')[Date.today.month] %> <%=Date.today.year%></h3>
+    <span class="span1"><%= link_to "prev", root_url(:month => (@date << 1).month, :year => (@date << 1).year)%></span>
+    <span class="cal-title span2"><%= t('date.month_names')[@date.month] %> <%=@date.year%></span>
+    <span class="span1"><%= link_to "next", root_url(:month => (@date >> 1).month, :year => (@date >> 1).year)%></span>
   </div>
-
+  
+  
+  <br>
+  <br>
   <table class="table table-bordered table-calendar">
     <tr>
       <th> Sunday </th>
@@ -14,20 +19,24 @@
       <th> Friday </th>
       <th> Saturday </th>
     </tr>
-    <% Date.today.beginning_of_month.beginning_of_week(:sunday).upto(Date.today.end_of_month.end_of_week(:sunday)) do |date| %>
+    <% @date.beginning_of_month.beginning_of_week(:sunday).upto(@date.end_of_month.end_of_week(:sunday)) do |date| %>
       <% if date.sunday? %>
         <tr></tr>
       <% end %>
 
       <td>
-        <%= date.day %>
+        <% if date.mon != @date.mon %>
+          <span class="faded-dates"><%= date.day %></span>
+        <% else %>
+          <%= date.day %>
+        <% end %>
         <% day_events = @events.select { |event| event.occurs_at.to_date == date } %>
         <% if !day_events.empty? %> 
          
             <% day_events.each do |event| %>
-             <br/>
-              <%= link_to truncate(event.name, :length => 17), event_url(event), :class => 'calendar-event' %>
-           	
+             <div class="progress">
+              <%= link_to truncate(event.name, :length => 17), event_url(event) %>
+           	 </div>
             <% end %>
          
         <% end %>
@@ -45,7 +54,7 @@
 <% if @events.empty? %> 
 Sorry no events available. Login to create one!
 <% else %>
-  <ul>
+  <ul class="nav nav-list">
     <% @events.each do |event| %>
       <li>
       <%= link_to event.name, event_url(event) %>
