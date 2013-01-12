@@ -1,4 +1,4 @@
-  <%= form_for(@event) do |form| %>
+<%= form_for(@event) do |form| %>
     <div>
       <%= form.label :name %>
       <%= form.text_field :name %>
@@ -11,10 +11,10 @@
       <%= form.label :zip_code %>
       <%= form.text_field :zip_code %>
     </div>
-    <div>
+    <div class="controls">
       <%= form.label :occurs_at, "Date" %>
       <%= form.datetime_select :occurs_at, :start_year => Time.now.year, :ampm => true,
-          :order => [:month, :day, :year, :hour, :minute], :minute_step => 15  %>
+          :order => [:month, :day, :year, :hour, :minute], :minute_step => 15, :class => "span1"  %>
     </div>
     <div>
       <%= form.label :details %>
