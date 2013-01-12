@@ -34,28 +34,21 @@
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag '/icon.ico', :rel => 'shortcut icon' %>
   </head>
-  <body>
+  <body> 
     <%= render 'layouts/header'%>
+    
+    <div class="background">
     <div class="container">
-        <div class="row">
+          <div class="row">
           <div class="span12">
             <%= bootstrap_flash %>
             <%= yield %>
           </div>
-          
-          
-        </div><!--/row-->
-
-
-        </body>
-      <footer class="footer-content">
-        <div class="bottom-tier">
-          <p class="copyright">&copy; 2013 Emily, Jennifer, Joy</p>
-        </div>
-      </footer>
-
-    </div> <!-- /container -->
-   
+     </div></div></div><!--/row-->
+  <hr>
+  <footer class="footer-content">
+      <p class="pull-right">&copy; 2013 Emily, Jennifer, Joy</p>
+  </footer>
     <%= javascript_include_tag "application" %>
-
+  </body>
 </html>
