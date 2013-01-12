@@ -26,22 +26,30 @@ opacity: 0.7;
   overflow: auto;
 }
 
-.progress {
-  margin: 2px;
-  background-color: #a8a6a9;
+.calendar-event--outside{
+  padding: 2px;
 }
 
 .calendar-event {
   list-style-type:none;
-	background-color:black;
+	background-color:#db7093;
 	color:white;
-	padding:2px;
-	border: solid 2px white;
+  padding:2px;
+  border-radius: 5px;
+}
+
+.calendar-event:hover {
+  text-decoration:none;
+  color:#cdc9c9;
 }
 
 .nav-centre {
   padding-top: 12px;
   font-size: 20px;
+}
+
+.future-events--list {
+  color:#db7093;
 }
 
 .footer-content {

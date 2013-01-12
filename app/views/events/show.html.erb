@@ -21,6 +21,7 @@
     <h3> Additional details </h3>
     <%= @event.details %>
   </div>
+  <br><br>
   <% if @event.created_by?(current_user) %>
     <%= link_to 'Edit', edit_event_url(@event), :class => "btn" %>
   <% else %>
